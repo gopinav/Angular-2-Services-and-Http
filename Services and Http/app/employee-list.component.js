@@ -9,17 +9,23 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
-var AppComponent = (function () {
-    function AppComponent() {
+var EmployeeListComponent = (function () {
+    function EmployeeListComponent() {
+        this.employees = [
+            { id: 1, name: "Andrew", gender: "Male" },
+            { id: 2, name: "Brandon", gender: "Male" },
+            { id: 3, name: "Christina", gender: "Female" },
+            { id: 4, name: "Elena", gender: "Female" }
+        ];
     }
-    AppComponent = __decorate([
+    EmployeeListComponent = __decorate([
         core_1.Component({
-            selector: 'my-app',
-            template: "<h1>Random Company</h1>\n             <employee-list></employee-list> \n\n  "
+            selector: 'employee-list',
+            template: "<ul *ngFor=\"let employee of employees\">\n                <li>{{employee.name}}</li>\n             </ul>"
         }), 
         __metadata('design:paramtypes', [])
-    ], AppComponent);
-    return AppComponent;
+    ], EmployeeListComponent);
+    return EmployeeListComponent;
 }());
-exports.AppComponent = AppComponent;
-//# sourceMappingURL=app.component.js.map
+exports.EmployeeListComponent = EmployeeListComponent;
+//# sourceMappingURL=employee-list.component.js.map
