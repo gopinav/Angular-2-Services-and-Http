@@ -16,12 +16,14 @@ var EmployeeDetailComponent = (function () {
         this.employees = [];
     }
     EmployeeDetailComponent.prototype.ngOnInit = function () {
-        this.employees = this._employeeService.getEmployees();
+        var _this = this;
+        this._employeeService.getEmployees()
+            .subscribe(function (resEmployeeData) { return _this.employees = resEmployeeData; }, function (resEmployeeError) { return _this.errorMsg = resEmployeeError; });
     };
     EmployeeDetailComponent = __decorate([
         core_1.Component({
             selector: 'employee-detail',
-            template: "<h2>Employee Details</h2>\n             <ul *ngFor=\"let employee of employees\">\n                <li>{{employee.id}}. {{employee.name}} - {{employee.gender}}</li>\n             </ul>"
+            template: "<h2>Employee Details</h2>\n             <h3>{{errorMsg}}</h3>\n             <ul *ngFor=\"let employee of employees\">\n                <li>{{employee.id}}. {{employee.name}} - {{employee.gender}}</li>\n             </ul>"
         }), 
         __metadata('design:paramtypes', [employee_service_1.EmployeeService])
     ], EmployeeDetailComponent);

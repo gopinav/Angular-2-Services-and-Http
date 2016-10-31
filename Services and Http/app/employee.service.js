@@ -9,20 +9,28 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var http_1 = require('@angular/http');
+var Observable_1 = require('rxjs/Observable');
+require('rxjs/add/operator/map');
+require('rxjs/add/operator/catch');
+require('rxjs/add/observable/throw');
 var EmployeeService = (function () {
-    function EmployeeService() {
+    function EmployeeService(_http) {
+        this._http = _http;
+        this._url = "apidata/employeedata.json";
     }
     EmployeeService.prototype.getEmployees = function () {
-        return [
-            { id: 1, name: "Andrew", gender: "Male" },
-            { id: 2, name: "Brandon", gender: "Male" },
-            { id: 3, name: "Christina", gender: "Female" },
-            { id: 4, name: "Elena", gender: "Female" }
-        ];
+        return this._http.get(this._url)
+            .map(function (response) { return response.json(); })
+            .catch(this.errorHandler);
+    };
+    EmployeeService.prototype.errorHandler = function (error) {
+        console.error(error);
+        return Observable_1.Observable.throw(error || "Server Error");
     };
     EmployeeService = __decorate([
         core_1.Injectable(), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [http_1.Http])
     ], EmployeeService);
     return EmployeeService;
 }());
