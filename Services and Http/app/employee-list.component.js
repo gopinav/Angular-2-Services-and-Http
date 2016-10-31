@@ -9,21 +9,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
     if (typeof Reflect === "object" && typeof Reflect.metadata === "function") return Reflect.metadata(k, v);
 };
 var core_1 = require('@angular/core');
+var employee_service_1 = require('./employee.service');
 var EmployeeListComponent = (function () {
-    function EmployeeListComponent() {
-        this.employees = [
-            { id: 1, name: "Andrew", gender: "Male" },
-            { id: 2, name: "Brandon", gender: "Male" },
-            { id: 3, name: "Christina", gender: "Female" },
-            { id: 4, name: "Elena", gender: "Female" }
-        ];
+    function EmployeeListComponent(_employeeService) {
+        this._employeeService = _employeeService;
+        this.employees = [];
     }
+    EmployeeListComponent.prototype.ngOnInit = function () {
+        this.employees = this._employeeService.getEmployees();
+    };
     EmployeeListComponent = __decorate([
         core_1.Component({
             selector: 'employee-list',
             template: "<ul *ngFor=\"let employee of employees\">\n                <li>{{employee.name}}</li>\n             </ul>"
         }), 
-        __metadata('design:paramtypes', [])
+        __metadata('design:paramtypes', [employee_service_1.EmployeeService])
     ], EmployeeListComponent);
     return EmployeeListComponent;
 }());
