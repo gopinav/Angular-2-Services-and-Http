@@ -4,7 +4,7 @@ import { EmployeeService } from './employee.service';
   selector: 'my-app',
   template: `<h1>Random Company</h1>
              <employee-list></employee-list> 
-
+             <employee-detail></employee-detail>
   `,
   providers: [EmployeeService]
 })

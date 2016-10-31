@@ -16,7 +16,7 @@ var AppComponent = (function () {
     AppComponent = __decorate([
         core_1.Component({
             selector: 'my-app',
-            template: "<h1>Random Company</h1>\n             <employee-list></employee-list> \n\n  ",
+            template: "<h1>Random Company</h1>\n             <employee-list></employee-list> \n             <employee-detail></employee-detail>\n  ",
             providers: [employee_service_1.EmployeeService]
         }), 
         __metadata('design:paramtypes', [])

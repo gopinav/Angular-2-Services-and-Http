@@ -10,22 +10,22 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 var core_1 = require('@angular/core');
 var employee_service_1 = require('./employee.service');
-var EmployeeListComponent = (function () {
-    function EmployeeListComponent(_employeeService) {
+var EmployeeDetailComponent = (function () {
+    function EmployeeDetailComponent(_employeeService) {
         this._employeeService = _employeeService;
         this.employees = [];
     }
-    EmployeeListComponent.prototype.ngOnInit = function () {
+    EmployeeDetailComponent.prototype.ngOnInit = function () {
         this.employees = this._employeeService.getEmployees();
     };
-    EmployeeListComponent = __decorate([
+    EmployeeDetailComponent = __decorate([
         core_1.Component({
-            selector: 'employee-list',
-            template: "<h2>Employee List</h2>\n             <ul *ngFor=\"let employee of employees\">\n                <li>{{employee.name}}</li>\n             </ul>"
+            selector: 'employee-detail',
+            template: "<h2>Employee Details</h2>\n             <ul *ngFor=\"let employee of employees\">\n                <li>{{employee.id}}. {{employee.name}} - {{employee.gender}}</li>\n             </ul>"
         }), 
         __metadata('design:paramtypes', [employee_service_1.EmployeeService])
-    ], EmployeeListComponent);
-    return EmployeeListComponent;
+    ], EmployeeDetailComponent);
+    return EmployeeDetailComponent;
 }());
-exports.EmployeeListComponent = EmployeeListComponent;
-//# sourceMappingURL=employee-list.component.js.map
+exports.EmployeeDetailComponent = EmployeeDetailComponent;
+//# sourceMappingURL=employee-detail.component.js.map
